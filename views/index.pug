@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+html(lang="en")
+
+head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css")
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
+    //- link(rel="stylesheet" href="style.css")
+    title Document
+    style
+        include style.css
+
+body
+    h2(class="ui center aligned icon header" id="header")
+        i(class="shopping cart icon") Shop List
+   
+
+    div(class="jumbotron")
+        
+        button(type="button" class="positive ui button" data-toggle="modal" data-target="#exampleModal")
+            i(class="shopping cart plus icon") Add Item
+        
+        div(class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true")
+            div(class="modal-dialog" role="document")
+                div(class="modal-content")
+                    div(class="modal-header")
+                        h2(class="ui header")
+                            i(class="shopping cart icon")
+                            div(class="content") Shopping Form
+                                div(class="sub header") Fill Up the Form
+                    
+                        button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                            span(aria-hidden="true") &times;
+                       
+                    div(class="modal-body")
+                        form(class="needs-validation" method="post" action="/create" novalidate)
+                            div(class="form-group")
+                                label(for="item")
+                                    i(class="shopping bag icon") Item Name:
+                                input(type="text" class="form-control" id="item" name="item"
+                                    aria-describedby="emailHelp" placeholder="Enter Item name" required)
+                                div(class="invalid-feedback") Please enter an Item Name
+                                
+                            div(class="form-group")
+                                label(for="qty")
+                                    i(class="tags icon") Quantity:
+                                input(type="number" class="form-control" id="qty" name="qty" placeholder="Quantity" required)
+                                div(class="invalid-feedback") Please enter a Quantity
+            
+                            div(class="form-group")
+                                label(for="priority")
+                                    i(class="shopping basket icon") Priority:
+                                input(type="number" class="form-control" id="priority" name="priority" placeholder="Priority")
+                                div(class="invalid-feedback") Please enter you Priority
+                            button(type="submit" id="saveBtn" class="positive ui button") Add
+                
+                    div(class="modal-footer")
+                        button(type="button" class="btn btn-secondary" data-dismiss="modal") Close
+                    
+        table(class="ui celled table")
+            thead
+                tr
+                    th Item Name
+                    th Quantity
+                    th Priority
+            tbody
+                each item in items
+                    tr
+                        td= item.item
+                        td= item.qty
+                        td= item.priority
+

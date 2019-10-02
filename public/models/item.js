@@ -13,5 +13,4 @@ var ItemSchema = new mongoose.Schema({
     priority: { type: Number, required: true },
 })
 
-var Item = mongoose.model('Item', ItemSchema);
-module.exports = Item;
+module.exports = mongoose.model('Item', ItemSchema);
